@@ -2,7 +2,7 @@
 const tagsEl = document.getElementById('tags')
 const textarea = document.getElementById('textarea')
 
-// when we text some textarea value will be added
+// when we  press enter key it can take any random value
 textarea.focus()
 
 textarea.addEventListener('keyup', (e) => {
@@ -17,12 +17,15 @@ textarea.addEventListener('keyup', (e) => {
     }
 })
 
-// we can take input press comma
+// this method take input 1st &with the help of filter& map it will be  remove all the space & comma  refresh the array also
 function createTags(input) {
-    const tags = input.split(',').filter(tag => tag.trim() !== '').map(tag => tag.trim())
+    const tags = input.split(',')
+    .filter(tag => tag.trim() !== '')
+    .map(tag => tag.trim())
     
     tagsEl.innerHTML = ''
-// tag element create  & append parend class 
+// this method is create a span & innertext it create tag appendchild in parent element
+
     tags.forEach(tag => {
         const tagEl = document.createElement('span')
         tagEl.classList.add('tag')
@@ -64,10 +67,12 @@ function pickRandomTag() {
     return tags[Math.floor(Math.random() * tags.length)]
 }
 
+// this method for highlighting the tag
 function highlightTag(tag) {
     tag.classList.add('highlight')
 }
 
+// this code for unhighlighting the tag
 function unHighlightTag(tag) {
     tag.classList.remove('highlight')
 }
